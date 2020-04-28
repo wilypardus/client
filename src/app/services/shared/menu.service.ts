@@ -9,7 +9,7 @@ export class MenuService {
         {titulo:'Home', url:'/'},
         {titulo:'Items', url:'pages/items'},
         {titulo:'Productos', url:'pages/products'},
-        {titulo:'Diseñadores', url:'pages/designer'},
+        {titulo:'Diseñadores', url:'pages/designers'},
         {titulo:'Contact', url:'pages/contacto'},
 
 
