@@ -1,0 +1,278 @@
+<!--================================
+        START FILTER AREA
+    =================================-->
+<div class="filter-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="filter-bar">
+                    <div class="filter__option filter--dropdown">
+                        <a href="#" id="drop1" class="dropdown-trigger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories
+                              <span class="lnr lnr-chevron-down"></span>
+                          </a>
+                        <ul class="custom_dropdown custom_drop2 dropdown-menu" aria-labelledby="drop1">
+                            <li>
+                                <a href="#">Wordpress
+                                      <span>35</span>
+                                  </a>
+                            </li>
+                            <li>
+                                <a href="#">Landing Page
+                                      <span>45</span>
+                                  </a>
+                            </li>
+                            <li>
+                                <a href="#">Psd Template
+                                      <span>13</span>
+                                  </a>
+                            </li>
+                            <li>
+                                <a href="#">Plugins
+                                      <span>08</span>
+                                  </a>
+                            </li>
+                            <li>
+                                <a href="#">HTML Template
+                                      <span>34</span>
+                                  </a>
+                            </li>
+                            <li>
+                                <a href="#">Components
+                                      <span>78</span>
+                                  </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- end /.filter__option -->
+
+                    <div class="filter__option filter--dropdown">
+                        <a href="#" id="drop2" class="dropdown-trigger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Filter By
+                              <span class="lnr lnr-chevron-down"></span>
+                          </a>
+                        <ul class="custom_dropdown dropdown-menu" aria-labelledby="drop2">
+                            <li>
+                                <a href="#">Trending items</a>
+                            </li>
+                            <li>
+                                <a href="#">Popular items</a>
+                            </li>
+                            <li>
+                                <a href="#">New items </a>
+                            </li>
+                            <li>
+                                <a href="#">Best seller </a>
+                            </li>
+                            <li>
+                                <a href="#">Best rating </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- end /.filter__option -->
+
+                    <div class="filter__option filter--dropdown filter--range">
+                        <a href="#" id="drop3" class="dropdown-trigger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Price Range
+                              <span class="lnr lnr-chevron-down"></span>
+                          </a>
+                        <div class="custom_dropdown dropdown-menu" aria-labelledby="drop3">
+                            <div class="range-slider price-range"></div>
+
+                            <div class="price-ranges">
+                                <span class="from rounded">$30</span>
+                                <span class="to rounded">$300</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end /.filter__option -->
+
+                    <div class="filter__option filter--select">
+                        <div class="select-wrap">
+                            <select name="precioOrd" [(ngModel)]="ordenar">
+                                  <option *ngFor="let precio of this._filtrosService.ordenar" [value]="precio.valor">{{precio.titulo}}</option>
+
+                              </select>
+                            <span class="lnr lnr-chevron-down"></span>
+                        </div>
+                    </div>
+                    <!-- end /.filter__option -->
+
+                    <div class="filter__option filter--select">
+                        <div class="select-wrap">
+                            <select name="selectLimite" [(ngModel)]="limite" (change)="cambiarLimite()">
+                                  <option *ngFor="let limite of this._filtrosService.limitesItem" [value]="limite">{{limite}} Items por página</option>
+                            </select>
+                            <span class="lnr lnr-chevron-down"></span>
+                        </div>
+                    </div>
+                    <!-- end /.filter__option -->
+
+                    <div class="filter__option filter--layout">
+                        <a href="all-products.html">
+                            <div class="svg-icon">
+                                <img class="svg" src="assets/images/svg/grid.svg" alt="it's just a layout control folks!">
+                            </div>
+                        </a>
+                        <a href="all-products-list.html">
+                            <div class="svg-icon">
+                                <img class="svg" src="assets/images/svg/list.svg" alt="it's just a layout control folks!">
+                            </div>
+                        </a>
+                    </div>
+                    <!-- end /.filter__option -->
+                </div>
+                <!-- end /.filter-bar -->
+            </div>
+            <!-- end /.col-md-12 -->
+        </div>
+        <!-- end filter-bar -->
+    </div>
+</div>
+<!-- end /.filter-area -->
+<!--================================
+      END FILTER AREA
+  =================================-->
+
+
+<!--================================
+      START PRODUCTS AREA
+  =================================-->
+<section class="products">
+    <!-- start container -->
+    <div class="container">
+
+        <!-- start .row -->
+        <div class="row">
+            <!-- start .col-md-4 -->
+            <div *ngFor="let item of items| paginate: { itemsPerPage: this.limite, currentPage: p, totalItems: this.totalRegistros  }" class="col-lg-4 col-md-6">
+                <!-- start .single-product -->
+                <div class="product product--card">
+
+                    <div class="product__thumbnail">
+                        <img [src]="item.img" alt="Product Image">
+                        <div class="prod_btn">
+                            <a routerLink="{{item._id}}" class="transparent btn--sm btn--round">Ver</a>
+                        </div>
+                        <!-- end /.prod_btn -->
+                    </div>
+                    <!-- end /.product__thumbnail -->
+
+                    <div class="product-desc">
+                        <a routerLink="[{{item._id}}]" class="product_title">
+                            <h4>{{item.nombre}}</h4>
+                        </a>
+                        <ul class="titlebtm">
+                            <li>
+                                <img class="auth-img" src="{{item.usuario.img}}" alt="author image">
+                                <p>
+                                    <a routerLink="{{item.usuario._id}}">{{item.usuario.nombre}}</a>
+                                </p>
+                            </li>
+                            <li class="product_cat">
+                                <a href="#">
+                                    <span class="lnr lnr-book"></span>{{item.categoria}}</a>
+                            </li>
+                        </ul>
+
+                        <p>{{item.descripcion}}</p>
+                    </div>
+                    <!-- end /.product-desc -->
+
+                    <div class="product-purchase">
+                        <div class="price_love">
+                            <span>{{item.precio}} €</span>
+                            <p>
+                                <span class="lnr lnr-heart"></span> 90</p>
+                        </div>
+                        <div class="sell">
+                            <p>
+                                <span class="lnr lnr-cart"></span>
+                                <span>{{item.ventas}}</span>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- end /.product-purchase -->
+                </div>
+                <!-- end /.single-product -->
+            </div>
+            <!-- end /.col-md-4 -->
+        </div>
+        <!-- end /.row -->
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="pagination-area">
+                    <nav class="navigation pagination" role="navigation">
+                        <div class="nav-links">
+
+                           <pagination-controls previousLabel="Anterior" nextLabel="Siguiente"(pageChange)="p = $event"></pagination-controls>
+                            <!-- <a class="prev page-numbers" href="#">
+                                <span class="lnr lnr-arrow-left"></span>
+                            </a>
+                            <a class="page-numbers current" href="#">1</a>
+                            <a class="page-numbers" href="#">2</a>
+                            <a class="page-numbers" href="#">3</a>
+                            <a class="next page-numbers" href="#">
+                                <span class="lnr lnr-arrow-right"></span>
+                            </a> -->
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <!-- end /.row -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    <!-- end /.container -->
+</section>
+<!--================================
+      END PRODUCTS AREA
+  =================================-->

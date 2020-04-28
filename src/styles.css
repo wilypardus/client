@@ -1,1 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+#themecolors a {
+    cursor: pointer;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.imgRedonda {
+    max-width: 46px;
+    max-height: 46px;
+    border-radius: 23px;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
