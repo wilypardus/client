@@ -18,7 +18,6 @@ import { USER_ROUTES } from './user.routes';
 import { DashboardSettingComponent } from './dashboard-setting/dashboard-setting.component';
 import { MisProductosComponent } from './mis-productos/mis-productos.component';
 import { CommonModule } from '@angular/common';
-import {NgxPaginationModule} from 'ngx-pagination';
 
 
 
@@ -51,7 +50,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     FormsModule,
     ChartsModule,
     CommonModule,
-    NgxPaginationModule
+
 
 
 

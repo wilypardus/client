@@ -11,7 +11,7 @@ import { ProductosComponent } from './productos/productos.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
-import {NgxPaginationModule} from 'ngx-pagination';
+
 
 
 
@@ -37,7 +37,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     ChartsModule,
     BrowserModule,
     CommonModule,
-    NgxPaginationModule
+
 
 
 

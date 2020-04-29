@@ -1,7 +1,6 @@
 import { RouterModule,Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { UsuarioService } from '../../services/service.index';
-import { DashboardMenuService } from '../../user/services/dashboard-menu.service';
+import { UsuarioService,DashboardMenuService } from '../../services/service.index';
 import { MenuService } from '../../services/shared/menu.service';
 
 @Component({

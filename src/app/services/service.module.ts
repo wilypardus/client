@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import {  SidebarService, SharedService,UsuarioService,DashboardMenuService } from './service.index';
+import {  SidebarService, SharedService,UsuarioService,DashboardMenuService,DashboardSettingsService } from './service.index';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginGuard } from './guards/login.guard';
+
 
 
 
@@ -15,6 +16,6 @@ import { LoginGuard } from './guards/login.guard';
     CommonModule,
     HttpClientModule
   ],
-  providers: [ SidebarService, SharedService,UsuarioService,LoginGuard,DashboardMenuService]
+  providers: [ SidebarService, SharedService,UsuarioService,LoginGuard,DashboardMenuService,DashboardSettingsService]
 })
 export class ServiceModule { }

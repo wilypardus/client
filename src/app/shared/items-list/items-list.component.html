@@ -1,0 +1,121 @@
+<div class="dashboard_contents">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="filter-bar dashboard_title_area clearfix filter-bar2">
+                    <div class="dashboard__title dashboard__title pull-left">
+                        <h3>Administrar Productos</h3>
+
+                    </div>
+
+                    <div class="pull-right">
+                        <div class="filter__option filter--text">
+                            <p *ngIf="this.totalRegistros ===1">
+                                <span>{{this.totalRegistros}}</span> Producto</p>
+                            <p *ngIf="this.totalRegistros !==1">
+                                <span>{{this.totalRegistros}}</span> Productos</p>
+
+                        </div>
+
+                        <div class="filter__option filter--select">
+                            <div class="select-wrap">
+                                <select name="selectLimite" [(ngModel)]="limite" (change)="cambiarLimite()">
+                        <option *ngFor="let limite of this._filtrosService.limitesItem" [value]="limite">{{limite}} Items por página</option>
+                  </select>
+                                <span class="lnr lnr-chevron-down"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end /.pull-right -->
+                </div>
+                <!-- end /.filter-bar -->
+            </div>
+            <!-- end /.col-md-12 -->
+        </div>
+        <!-- end /.row -->
+
+        <div class="row">
+            <!-- start .col-md-4 -->
+            <div class="col-lg-4 col-md-6" *ngFor="let item of items| paginate: { itemsPerPage: this.limite, currentPage: p, totalItems: this.totalRegistros  }">
+                <!-- start .single-product -->
+                <div class="product product--card">
+
+
+
+                    <div class="product__thumbnail">
+                        <img [src]="item.img" alt="Product Image">
+                        <div class="prod_btn">
+                            <a routerLink="{{item._id}}" class="transparent btn--sm" style="border:0px solid white"><span>Editar</span></a>
+                        </div>
+                        <!-- end /.prod_btn -->
+                    </div>
+
+
+                    <!-- end /.product__thumbnail -->
+
+                    <div class="product-desc">
+                        <a href="#" class="product_title">
+                            <h4>{{item.nombre}}</h4>
+                        </a>
+                        <ul class="titlebtm">
+                            <li>
+                                <img class="auth-img" [src]="item.usuario.img" [alt]="item.usuario.nombre">
+                                <p>
+                                    <a href="#">{{item.usuario.nombre}}</a>
+                                </p>
+                            </li>
+                            <li class="product_cat">
+                                <a href="#">
+                                    <span class="lnr lnr-book"></span>{{item.categoria}}</a>
+                            </li>
+                        </ul>
+
+                        <p>{{item.descripcion}}</p>
+                    </div>
+                    <!-- end /.product-desc -->
+
+                    <div class="product-purchase">
+                        <div class="price_love">
+                            <span>{{item.precio}}</span>
+                            <p>
+                                <span class="lnr lnr-heart"></span> {{item.reviews}}</p>
+                        </div>
+                        <div class="sell">
+                            <p>
+                                <span class="lnr lnr-cart"></span>
+                                <span>{{item.ventas}}</span>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- end /.product-purchase -->
+                </div>
+                <!-- end /.single-product -->
+            </div>
+            <!-- end /.col-md-4 -->
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="pagination-area">
+                    <nav class="navigation pagination" role="navigation">
+                        <div class="nav-links">
+
+                            <pagination-controls previousLabel="Anterior" nextLabel="Siguiente" (pageChange)="p = $event"></pagination-controls>
+                            <!-- <a class="prev page-numbers" href="#">
+                    <span class="lnr lnr-arrow-left"></span>
+                </a>
+                <a class="page-numbers current" href="#">1</a>
+                <a class="page-numbers" href="#">2</a>
+                <a class="page-numbers" href="#">3</a>
+                <a class="next page-numbers" href="#">
+                    <span class="lnr lnr-arrow-right"></span>
+                </a> -->
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <!-- end /.row -->
+    </div>
+</div>

@@ -19,7 +19,6 @@ export class MisProductosComponent implements OnInit {
 
   public id="5ea1b395f3adb10113a6c402";
   items:Item[]=[];
-  desde:number=0;
   totalRegistros:number=0;
   usuario:Usuario;
   p: number = 1;
