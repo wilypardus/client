@@ -10,6 +10,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginGuard } from '../services/guards/login.guard';
 import { DashboardSettingComponent } from './dashboard-setting/dashboard-setting.component';
 import { MisProductosComponent } from './mis-productos/mis-productos.component';
+import { CrearItemComponent } from './crear-item/crear-item.component';
+import { ActualizarItemComponent } from './actualizar-item/actualizar-item.component';
+
 
 
 const pagesDRoutes: Routes = [
@@ -19,6 +22,9 @@ const pagesDRoutes: Routes = [
       { path: 'dashboard', component: DashboardComponent,data:{titulo:'Dashboard'} },
       { path: 'dashboard-settings', component: DashboardSettingComponent,data:{titulo:'Ajustes'} },
       { path: 'dashboard-productos', component: MisProductosComponent,data:{titulo:'Mis Productos'} },
+      { path: 'crear-item', component: CrearItemComponent,data:{titulo:'Nuevo item'} },
+      { path: 'actualizar-item', component: ActualizarItemComponent,data:{titulo:'Nuevo item'} },
+
       // { path: 'progress', component: ProgressComponent,data:{titulo:'Progress'} },
       // { path: 'graficas1', component: Graficas1Component,data:{titulo:'Gráficas'} },
       // { path: 'promesas', component: PromesasComponent,data:{titulo:'Promesas'} },

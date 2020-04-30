@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { map, ignoreElements } from 'rxjs/operators';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { Item } from '../../models/item.model';
 
 
 
@@ -109,7 +110,7 @@ logout(){
 
   }
 
-
+//CREAR USUARIO
   crearUsuario(usuario:Usuario){
   let url=URL_SERVICIOS+'/usuario';
   return this.http.post(url, usuario).pipe(map((resp: any) => {
@@ -121,6 +122,18 @@ logout(){
     return resp.usuario;
   }));
   }
+//CREAR ITEM
+  crearItem(item:Item,token){
+    let url=URL_SERVICIOS+'/item?token='+token;
+    return this.http.post(url, item).pipe(map((resp: any) => {
+      Swal.fire(
+        'Item Creado!',
+        item.nombre,
+        'success'
+      )
+      return resp.item;
+    }));
+    }
 
 
 

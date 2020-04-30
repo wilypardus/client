@@ -17,26 +17,27 @@ import { FiltrosService } from '../../services/shared/filtros.service';
 })
 export class MisProductosComponent implements OnInit {
 
-  public id="5ea1b395f3adb10113a6c402";
+  //public id="5ea1b395f3adb10113a6c402";
   items:Item[]=[];
   totalRegistros:number=0;
   usuario:Usuario;
   p: number = 1;
   limite=12;
+  id:string;
 
     constructor(public _autorItemsService:AutorItemsService, public _usuarioService:UsuarioService,public _itemsService:ItemService,public _filtrosService:FiltrosService,) { }
 
   ngOnInit(): void {
 
-    this._autorItemsService.getItemsAutor(this.id).subscribe((resp:any)=>{
+  //   this._autorItemsService.getItemsAutor(this.id).subscribe((resp:any)=>{
+  //     console.log(resp);
 
-      this.totalRegistros=resp.tabla.length;
-      this.items=resp.tabla;
-      this.usuario=resp.tabla.usuario;
-      console.log(this.totalRegistros);
-      console.log(this.items);
-  })
+  //     this.items=resp.item;
+  //     this.totalRegistros=resp.item.length;
 
+  //     console.log(this.totalRegistros);
+  // })
+this.id = localStorage.getItem('id');
 
 
 
@@ -52,4 +53,5 @@ cambiarLimite(){
 
     })
 }
+
 }

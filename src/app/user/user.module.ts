@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ChartsModule } from 'ng2-charts';
 
@@ -18,6 +18,8 @@ import { USER_ROUTES } from './user.routes';
 import { DashboardSettingComponent } from './dashboard-setting/dashboard-setting.component';
 import { MisProductosComponent } from './mis-productos/mis-productos.component';
 import { CommonModule } from '@angular/common';
+import { CrearItemComponent } from './crear-item/crear-item.component';
+import { ActualizarItemComponent } from './actualizar-item/actualizar-item.component';
 
 
 
@@ -38,7 +40,9 @@ import { CommonModule } from '@angular/common';
     // RxjsComponent,
     DashboardSettingComponent,
     MisProductosComponent,
-    DashboardMenuComponent
+    DashboardMenuComponent,
+    CrearItemComponent,
+    ActualizarItemComponent
 
 
 
@@ -50,6 +54,8 @@ import { CommonModule } from '@angular/common';
     FormsModule,
     ChartsModule,
     CommonModule,
+    ReactiveFormsModule,
+
 
 
 

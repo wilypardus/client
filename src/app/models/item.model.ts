@@ -6,10 +6,12 @@ export class Item {
     public categoria:string,
     public usuario:any,
     public descripcion:string,
-    public comentarios:string,
     public precio:number,
     public ventas:number=0,
-    public reviews:any,
+    public comentarios?:string,
+    public reviews?:any,
+    public modified?:Date,
+    public created?:Date,
     public _id?:string,
   ){}
 }

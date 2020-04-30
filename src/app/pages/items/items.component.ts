@@ -43,34 +43,34 @@ p: number = 1;
     }
 
   ngOnInit(): void {
-    this.getItems();
-    console.log(this.usuario);
+    // this.getItems();
+    // console.log(this.usuario);
   }
 
-cambiarLimite(){
-    this.items=[];
-    this._itemsService.getItems().subscribe((resp:any)=>{
-    this.totalRegistros=resp.total;
-    this.items=resp.items;
-    this.usuario=resp.items.usuario;
-    console.log(this.limite);
+// cambiarLimite(){
+//     this.items=[];
+//     this._itemsService.getItems().subscribe((resp:any)=>{
+//     this.totalRegistros=resp.total;
+//     this.items=resp.items;
+//     this.usuario=resp.items.usuario;
+//     console.log(this.limite);
 
-      })
+//       })
 
-}
+//}
 
 
 //OBTENER ITEMS
-getItems(){
+// getItems(){
 
-  this._itemsService.getItems().subscribe((resp:any)=>{
-    console.log(resp);
-    this.totalRegistros=resp.total;
-    this.items=resp.items;
-    this.usuario=resp.items.usuario;
+//   this._itemsService.getItems().subscribe((resp:any)=>{
+//     console.log(resp);
+//     this.totalRegistros=resp.total;
+//     this.items=resp.items;
+//     this.usuario=resp.items.usuario;
 
-      })
-}
+//       })
+// }
 
 
 }

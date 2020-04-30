@@ -19,7 +19,7 @@ usuario:Usuario
   }
   getItemsAutor(id:string){
 
-    let url=URL_SERVICIOS+'/busqueda/coleccion/iautores/'+id;
+    let url=URL_SERVICIOS+'/item/autor/'+id;
     return this.http.get(url);
 
 
