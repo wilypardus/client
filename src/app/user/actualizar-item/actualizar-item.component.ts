@@ -51,8 +51,38 @@ this.activatedRoute.params.subscribe(params=>{
   // console.log(this.token);
 
 
-
+// BORRAR
 }
+borrarItem(){
+  Swal.fire({
+
+    title: '¿Estás seguro?',
+    text: "Esta acción no se puede revertir",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Eliminar'
+  }).then((result) => {
+    if (result.value) {
+      this._itemService.borrarItem(this.itemId,this.item, this.token)
+      .subscribe(resp => {
+        // console.log(resp);
+        setTimeout(()=>{
+          this.router.navigate(['/user/dashboard-productos']);
+        },2500)
+
+      });
+      Swal.fire({
+        timer:2000,
+        title:'Eliminado',
+        text:'El producto ha sido eliminado correctamente',
+        icon:'success'
+      })
+    }
+  })
+}
+// ACTUALIZAR
 
 actualizarItem(){
   if (this.forma.invalid){
@@ -68,10 +98,14 @@ actualizarItem(){
 
   );
 
-  this._itemService.crearItem(item, this.token)
+  this._itemService.actualizarItem(this.itemId,item, this.token)
                                     .subscribe(resp => {
                                       // console.log(resp);
-                                      this.router.navigate(['/user/dashboard-productos']);
+                                      setTimeout(()=>{
+                                        this.router.navigate(['/user/dashboard-productos']);
+
+                                      },2500)
+
                                     });
 
 }

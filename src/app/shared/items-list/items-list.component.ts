@@ -5,7 +5,8 @@ import { AutorItemsService } from '../../services/shared/autor-items.service';
 import { UsuarioService } from '../../services/usuario/usuario.service';
 import { ItemService } from '../../services/shared/item.service';
 import { FiltrosService } from '../../services/shared/filtros.service';
-import { Router } from '@angular/router';
+import { Router, ActivationEnd } from '@angular/router';
+import { filter,map } from 'rxjs/operators';
 
 
 
@@ -24,16 +25,34 @@ export class ItemsListComponent implements OnInit {
   usuario: Usuario;
   p: number = 1;
   limite = 12;
+  isUser:string;
+
   constructor(
     public _autorItemsService : AutorItemsService,
     public _usuarioService : UsuarioService,
     public _itemsService : ItemService,
     public _filtrosService : FiltrosService,
-    public router:Router,
-    ) { }
+    private router:Router,
+    ) {
+
+      this.getDataRoute()
+      .subscribe(data=>{
+      this.isUser=data.isUser;
+      })
+      console.log(this.isUser);
+
+    }
 
   ngOnInit(): void {
     this.recibirId(this.id);
+  }
+  getDataRoute(){
+    return this.router.events.pipe(
+      filter(evento=>evento instanceof ActivationEnd),
+      filter((evento:ActivationEnd)=> evento.snapshot.firstChild === null),
+      map((evento:ActivationEnd)=>evento.snapshot.data)
+    )
+
   }
 
   cambiarLimite(){

@@ -70,6 +70,9 @@ export class RegisterComponent implements OnInit {
     this._usuarioService.crearUsuario(usuario)
                                       .subscribe(resp=>{
                                         console.log(resp);
+                                        setTimeout(()=>{
+
+                                        },3000)
                                         this.router.navigate(['/login']);
                                       });
 

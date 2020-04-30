@@ -21,9 +21,9 @@ const pagesDRoutes: Routes = [
   children:[
       { path: 'dashboard', component: DashboardComponent,data:{titulo:'Dashboard'} },
       { path: 'dashboard-settings', component: DashboardSettingComponent,data:{titulo:'Ajustes'} },
-      { path: 'dashboard-productos', component: MisProductosComponent,data:{titulo:'Mis Productos'} },
+      { path: 'dashboard-productos', component: MisProductosComponent,data:{titulo:'Mis Productos',isUser:true} },
       { path: 'crear-item', component: CrearItemComponent,data:{titulo:'Nuevo Producto'} },
-      { path: 'actualizar-item/:itemId', component: ActualizarItemComponent,data:{titulo:'Actualizar Producto',user:true} },
+      { path: 'actualizar-item/:itemId', component: ActualizarItemComponent,data:{titulo:'Actualizar Producto'} },
 
       // { path: 'progress', component: ProgressComponent,data:{titulo:'Progress'} },
       // { path: 'graficas1', component: Graficas1Component,data:{titulo:'Gráficas'} },

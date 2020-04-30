@@ -71,7 +71,10 @@ usuario: Usuario;
     this._itemService.crearItem(item, this.token)
                                       .subscribe(resp => {
                                         // console.log(resp);
+                                      setTimeout(()=>{
                                         this.router.navigate(['/user/dashboard-productos']);
+                                      },2500)
+
                                       });
 
   }

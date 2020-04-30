@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, ignoreElements } from 'rxjs/operators';
 import Swal from 'sweetalert2';
 import { Item } from '../../models/item.model';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -14,7 +15,9 @@ result:any;
 items: Item[] = [];
 totalRegistros : number = 0;
 id:string | number;
-  constructor(public http:HttpClient) {  }
+  constructor(
+    public http:HttpClient,
+    public router:Router) {  }
 
   getItems(){
     let url=URL_SERVICIOS+'/item';
@@ -40,15 +43,48 @@ id:string | number;
   crearItem(item:Item,token){
     let url = URL_SERVICIOS + '/item?token=' + token;
     return this.http.post(url, item).pipe(map((resp: any) => {
-      Swal.fire(
-        'Item Creado!',
-        item.nombre,
-        'success'
-      )
+      Swal.fire({
+        timer:2000,
+        text:'Producto creado correctamente!',
+        title:item.nombre,
+        icon:'success',
+      }).then( ()=> {
+        this.router.navigate(['/user/dashboard-productos']);
+
+
+
+      })
       return resp.item;
     }));
     }
 
+    // ACTUALIZAR ITEM
+  actualizarItem(id:string,item:Item,token){
+    let url = URL_SERVICIOS + '/item/'+id+'?token=' + token;
+    return this.http.put(url, item).pipe(map((resp: any) => {
+      Swal.fire({
+        timer:2000,
+        text:'Producto guardado correctamente!',
+        title:item.nombre,
+        icon:'success',
+      }).then( ()=> {
+        this.router.navigate(['/user/dashboard-productos']);
+
+
+
+      })
+      return resp.item;
+    }));
+    }
+
+       // BORRAR ITEM
+  borrarItem(id:string,item:Item,token){
+    let url = URL_SERVICIOS + '/item/'+id+'?token=' + token;
+    return this.http.delete(url).pipe(map((resp: any) => {
+
+      return resp.item;
+    }));
+    }
 
 
 }

@@ -1,6 +1,6 @@
 <div class="dashboard_contents">
     <div class="container">
-        <form action="#" class="setting_form">
+        <form ngNativeValidate [formGroup]="forma" (ngSubmit)="actualizarUsuario()" class="setting_form">
             <div class="row">
                 <div class="col-lg-6">
                     <div class="information_module">
@@ -16,7 +16,7 @@
                                     <label for="acname">Nombre
                                       <sup>*</sup>
                                   </label>
-                                    <input type="text" id="acname" class="text_field" placeholder="First Name">
+                                    <input formControlName="nombre" name="nombre" type="text" id="acname" class="text_field" placeholder="First Name">
                                 </div>
 
                                 <div class="form-group">
@@ -33,7 +33,7 @@
                                     <label for="emailad">Correo Eléctronico
                                       <sup>*</sup>
                                   </label>
-                                    <input type="text" id="emailad" class="text_field" placeholder="Email address" value="contact@.com">
+                                    <input formControlName="correo" name="correo" type="text" id="emailad" class="text_field" placeholder="Email address" value="contact@.com">
                                 </div>
 
                                 <div class="form-group">
@@ -196,7 +196,7 @@
                         <div class="information__set profile_images toggle_module collapse" id="collapse3">
                             <div class="information_wrapper">
                                 <div class="profile_image_area">
-                                    <img src="assets/images/authplc.png" alt="Author profile area">
+                                    <img [src]="img" alt="Author profile area">
                                     <div class="img_info">
                                         <p class="bold">Imagen de perfil</p>
                                         <p class="subtitle">JPG, GIF o PNG 100x100 px</p>

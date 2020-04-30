@@ -101,7 +101,10 @@ logout(){
 
     let url=URL_SERVICIOS+'/usuario/ob';
 
-    return this.http.get(url,id);
+    return this.http.get(url,id).pipe(map((resp: any) => {
+
+      return resp;
+    }));
   }
 
 //CREAR USUARIO
@@ -117,6 +120,24 @@ logout(){
   }));
   }
 
+// ACTUALIZAR USUARIO
+  actualizarUsuario(id:string,usuario:Usuario,token){
+    let url = URL_SERVICIOS + '/usuario/'+id+'?token=' + token;
+    return this.http.put(url, usuario).pipe(map((resp: any) => {
+      Swal.fire({
+        timer:2000,
+        text:'Tus datos han sido modificados correctamente correctamente!',
+        title:'Datos Modificados',
+        icon:'success',
+      }).then( ()=> {
+        location.reload();
+
+
+
+      })
+      return resp.item;
+    }));
+    }
 
 
 

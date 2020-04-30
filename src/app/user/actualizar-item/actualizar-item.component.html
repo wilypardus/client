@@ -169,16 +169,21 @@
                     <!-- end /.upload_modules -->
 
                     <!-- submit button -->
-                    <button type="submit" class="btn btn--round btn--fullwidth btn--lg">Submit Your Item for Review</button>
+                    <div class="row text-center">
+                        <div class="col">
+                            <button type="submit" class="btn btn--round btn--lg btn--lg">Guardar </button>
+                        </div>
+                    </div>
                 </form>
             </div>
             <!-- end /.col-md-8 -->
 
             <div class="col-lg-4 col-md-5">
                 <aside class="sidebar upload_sidebar">
-                    <div class="sidebar-card">
+                    <div class="sidebar-card text-center">
                         <div class="card-title">
-                            <h3>Quick Upload Rules</h3>
+                            <button (click)="borrarItem()" class="btn btn-lg btn--round btn-danger">Eliminar</button>
+
                         </div>
 
                         <div class="card_content">

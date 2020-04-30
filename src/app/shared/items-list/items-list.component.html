@@ -1,10 +1,19 @@
 <div class="dashboard_contents">
+
     <div class="container">
+        <div class="row mb-5" *ngIf="isUser">
+            <div class="col-md-12 text-center">
+                <button routerLink="../crear-item" class="btn btn-lg btn--icon btn--round btn--fullwidth">
+                  <span class="lnr lnr-plus-circle"></span> Crear nuevo producto</button>
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-12">
+
                 <div class="filter-bar dashboard_title_area clearfix filter-bar2">
                     <div class="dashboard__title dashboard__title pull-left">
-                        <h3>Administrar Productos</h3>
+                        <h3 *ngIf="isUser">Administrar Productos</h3>
+                        <h3 *ngIf="!isUser">Productos</h3>
 
                     </div>
 
@@ -45,7 +54,9 @@
                     <div class="product__thumbnail">
                         <img [src]="item.img" alt="Product Image">
                         <div class="prod_btn">
-                            <a [routerLink]="['../actualizar-item',item._id]" class="transparent btn--sm" style="border:0px solid white"><span>Editar</span></a>
+                            <a *ngIf="isUser" [routerLink]="['../actualizar-item',item._id]" class="transparent btn--sm" style="border:0px solid white"><span>Editar</span></a>
+                            <a *ngIf="!isUser" [routerLink]="['../ver-item',item._id]" class="transparent btn--sm" style="border:0px solid white"><span>Ver</span></a>
+
                         </div>
                         <!-- end /.prod_btn -->
                     </div>
