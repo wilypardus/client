@@ -45,7 +45,7 @@
                     <div class="product__thumbnail">
                         <img [src]="item.img" alt="Product Image">
                         <div class="prod_btn">
-                            <a routerLink="{{item._id}}" class="transparent btn--sm" style="border:0px solid white"><span>Editar</span></a>
+                            <a [routerLink]="['../actualizar-item',item._id]" class="transparent btn--sm" style="border:0px solid white"><span>Editar</span></a>
                         </div>
                         <!-- end /.prod_btn -->
                     </div>

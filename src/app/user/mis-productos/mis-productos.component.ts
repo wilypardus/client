@@ -43,15 +43,15 @@ this.id = localStorage.getItem('id');
 
 }
 
-cambiarLimite(){
-  this.items=[];
-  this._autorItemsService.getItemsAutor(this.id).subscribe((resp:any)=>{
-    this.items=resp.tabla;
-    this.usuario=resp.tabla.usuario;
-    console.log(this.totalRegistros);
-    console.log(this.items);
+// cambiarLimite(){
+//   this.items=[];
+//   this._autorItemsService.getItemsAutor(this.id).subscribe((resp:any)=>{
+//     this.items=resp.tabla;
+//     this.usuario=resp.tabla.usuario;
+//     console.log(this.totalRegistros);
+//     console.log(this.items);
 
-    })
-}
+//     })
+// }
 
 }

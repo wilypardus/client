@@ -4,6 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { Usuario } from '../../models/usuario.model';
 import { UsuarioService } from '../usuario/usuario.service';
 
+//// NO SE USA ////
+
 @Injectable({
   providedIn: 'root'
 })
@@ -17,11 +19,12 @@ usuario:Usuario
 
 
   }
-  getItemsAutor(id:string){
+  // getItemsAutor(id:string){
 
-    let url=URL_SERVICIOS+'/item/autor/'+id;
-    return this.http.get(url);
+  //   let url=URL_SERVICIOS+'/item/autor/'+id;
+  //   return this.http.get(url);
 
 
-  }
+  // }
 }
+

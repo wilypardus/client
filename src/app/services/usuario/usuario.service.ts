@@ -59,7 +59,6 @@ logout(){
   localStorage.removeItem('token');
   localStorage.removeItem('usuario');
   this.router.navigate(['/pages']);
-
 }
 
 
@@ -68,7 +67,7 @@ logout(){
     return this.http.post(url,{token}).pipe(map((resp:any)=>{
       this.guardarStorage( resp.id,resp.token,resp.usuario)
       return true;
-    }))
+    }));
   }
 
 
@@ -95,19 +94,14 @@ logout(){
     let token=localStorage.getItem('token');
     let url=URL_SERVICIOS+'/usuario/obt/?token='+token;
 
-
     return this.http.get(url);
-
-
   }
+
   obtenerDatosId(id:any){
 
     let url=URL_SERVICIOS+'/usuario/ob';
 
-
     return this.http.get(url,id);
-
-
   }
 
 //CREAR USUARIO
@@ -122,18 +116,7 @@ logout(){
     return resp.usuario;
   }));
   }
-//CREAR ITEM
-  crearItem(item:Item,token){
-    let url=URL_SERVICIOS+'/item?token='+token;
-    return this.http.post(url, item).pipe(map((resp: any) => {
-      Swal.fire(
-        'Item Creado!',
-        item.nombre,
-        'success'
-      )
-      return resp.item;
-    }));
-    }
+
 
 
 

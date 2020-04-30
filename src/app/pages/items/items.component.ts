@@ -47,17 +47,17 @@ p: number = 1;
     // console.log(this.usuario);
   }
 
-// cambiarLimite(){
-//     this.items=[];
-//     this._itemsService.getItems().subscribe((resp:any)=>{
-//     this.totalRegistros=resp.total;
-//     this.items=resp.items;
-//     this.usuario=resp.items.usuario;
-//     console.log(this.limite);
+cambiarLimite(){
+    this.items=[];
+    this._itemsService.getItems().subscribe((resp:any)=>{
+    this.totalRegistros=resp.total;
+    this.items=resp.items;
+    this.usuario=resp.items.usuario;
+    console.log(this.limite);
 
-//       })
+      })
 
-//}
+}
 
 
 //OBTENER ITEMS

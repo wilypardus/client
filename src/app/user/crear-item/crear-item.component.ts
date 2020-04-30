@@ -5,6 +5,7 @@ import { UsuarioService } from '../../services/usuario/usuario.service';
 import { Item } from '../../models/item.model';
 import { Router } from '@angular/router';
 import { Usuario } from '../../models/usuario.model';
+import { ItemService } from '../../services/shared/item.service';
 
 @Component({
   selector: 'app-crear-item',
@@ -19,6 +20,7 @@ usuario: Usuario;
 
   constructor(
     public _usuarioService: UsuarioService,
+    public _itemService: ItemService,
     public router: Router) { }
 
   ngOnInit(): void {
@@ -66,7 +68,7 @@ usuario: Usuario;
 
 
 
-    this._usuarioService.crearItem(item, this.token)
+    this._itemService.crearItem(item, this.token)
                                       .subscribe(resp => {
                                         // console.log(resp);
                                         this.router.navigate(['/user/dashboard-productos']);
