@@ -2,6 +2,7 @@ import { RouterModule,Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService,DashboardMenuService } from '../../services/service.index';
 import { MenuService } from '../../services/shared/menu.service';
+import { Usuario } from 'src/app/models/usuario.model';
 
 @Component({
   selector: 'app-header',
@@ -10,31 +11,39 @@ import { MenuService } from '../../services/shared/menu.service';
   ]
 })
 export class HeaderComponent implements OnInit {
-  usuarioImg:any;
-  usuarioName:any;
-  usuarioRole:any;
+  usuario:Usuario;
+  // usuarioImg:any;
+  // usuarioName:any;
+  // usuarioRole:any;
   mobileCerrado:boolean=true;
   constructor(
     public _usuarioService:UsuarioService,
     public _dashboardMenuService:DashboardMenuService,
     public _MenuService:MenuService,
     public router:RouterModule,
-  ) { }
+  ) {
+
+    this.usuario=this._usuarioService.usuario;
+  }
 
   ngOnInit(): void {
 
-    this.cargarDatos();
+
+  }
+  ngOnChanges(): void {
+    // this.cargarDatos();
+
   }
 
-  cargarDatos(){
-    this._usuarioService.obtenerDatos()
-    .subscribe((resp:any)=>{
-  //console.log(resp);
-      this.usuarioImg=resp.img;
-      this.usuarioName=resp.nombre;
-      this.usuarioRole=resp.role;
-    })
-    }
+  // cargarDatos(){
+  //   this._usuarioService.obtenerDatos()
+  //   .subscribe((resp:any)=>{
+  // //console.error(resp);
+  //     this.usuarioImg=resp.usuario.img;
+  //     this.usuarioName=resp.usuario.nombre;
+  //     this.usuarioRole=resp.usuario.role;
+  //   })
+  //   }
 
   openMobile(){
   this.mobileCerrado=!this.mobileCerrado;

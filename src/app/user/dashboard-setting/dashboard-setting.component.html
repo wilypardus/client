@@ -196,7 +196,9 @@
                         <div class="information__set profile_images toggle_module collapse" id="collapse3">
                             <div class="information_wrapper">
                                 <div class="profile_image_area">
-                                    <img [src]="img" alt="Author profile area">
+                                    <img [src]="usuario.img" alt="Author profile area">
+                                    <input formControlName="img" name="img" type="text" class="text_field" placeholder="img">
+
                                     <div class="img_info">
                                         <p class="bold">Imagen de perfil</p>
                                         <p class="subtitle">JPG, GIF o PNG 100x100 px</p>

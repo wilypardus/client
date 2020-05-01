@@ -26,8 +26,9 @@ export class UsuarioService {
     public router:Router,
     )
   {
-    console.log('Servicio usuario listo');
+    //console.log('Servicio usuario listo');
     this.cargarStorage();
+    console.log(this.usuario);
   }
 
 estaLogeado(){
@@ -124,6 +125,8 @@ logout(){
   actualizarUsuario(id:string,usuario:Usuario,token){
     let url = URL_SERVICIOS + '/usuario/'+id+'?token=' + token;
     return this.http.put(url, usuario).pipe(map((resp: any) => {
+      this.guardarStorage( resp.usuario._id,token,resp.usuario);
+
       Swal.fire({
         timer:2000,
         text:'Tus datos han sido modificados correctamente correctamente!',
@@ -131,11 +134,8 @@ logout(){
         icon:'success',
       }).then( ()=> {
         location.reload();
-
-
-
       })
-      return resp.item;
+      return resp.usuario;
     }));
     }
 

@@ -10,19 +10,28 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   ]
 })
 export class DashboardSettingComponent implements OnInit {
-  forma:FormGroup;
-  usuario:Usuario;
-  img:string;
+  forma: FormGroup;
+  usuario: Usuario;
+
+  token;
 
 
 
   constructor(
-    public _usuarioService:UsuarioService
+    public _usuarioService: UsuarioService
   ) {
-    this.forma=new FormGroup({
-      nombre:new FormControl(null, Validators.required),
-      correo:new FormControl(null, [Validators.required, Validators.email]),
+    this.forma = new FormGroup({
+      nombre: new FormControl(null, Validators.required),
+      correo: new FormControl(null, [Validators.required, Validators.email]),
+      img: new FormControl(null, [Validators.required]),
 
+
+    });
+    this.usuario = this._usuarioService.usuario;
+    this.forma.setValue({
+      nombre: this.usuario.nombre,
+      correo: this.usuario.email,
+      img: this.usuario.img,
     });
 
 
@@ -32,44 +41,26 @@ export class DashboardSettingComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.obtenerDatosUser();
+
+
   }
 
-  obtenerDatosUser(){
-
-    this._usuarioService.obtenerDatos().subscribe((resp: Usuario) => {
-       this.usuario = resp;
-       this. img=resp.img;
-        //console.log(resp);
-
-        this.forma.setValue({
-          nombre:this.usuario.nombre,
-          correo:this.usuario.email,
-
-
-        })
-        });
-
-  }
 
   actualizarUsuario(){
-    let token=localStorage.getItem('token');
+    this.token = localStorage.getItem('token');
     if (this.forma.invalid){
       return;
     }
-    const usuario = new Usuario(
+    const usuarioSave = new Usuario(
       this.forma.value.nombre,
       this.forma.value.correo,
       this.forma.value.img,
 
     );
-    this._usuarioService.actualizarUsuario(this.usuario._id,this.usuario,token)
+    this._usuarioService.actualizarUsuario(this.usuario._id, usuarioSave, this.token)
     .subscribe(resp => {
       // console.log(resp);
-      setTimeout(()=>{
 
-
-      },2500)
 
     });
 
