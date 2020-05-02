@@ -196,13 +196,29 @@
                         <div class="information__set profile_images toggle_module collapse" id="collapse3">
                             <div class="information_wrapper">
                                 <div class="profile_image_area">
-                                    <img [src]="usuario.img" alt="Author profile area">
-                                    <input formControlName="img" name="img" type="text" class="text_field" placeholder="img">
+                                    <img *ngIf="!imagenTemp" [src]="usuario.img|imagen" alt="Author profile area">
+                                    <img *ngIf="imagenTemp" [src]="imagenTemp" alt="Author profile area">
+                                    <!-- <input formControlName="img" name="img" type="text" class="text_field" placeholder="img"> -->
+
+
 
                                     <div class="img_info">
                                         <p class="bold">Imagen de perfil</p>
                                         <p class="subtitle">JPG, GIF o PNG 100x100 px</p>
                                     </div>
+
+                                    <div class="prof_img_upload">
+                                        <div class="upload_title">
+
+                                            <label for="dp" class="upload_btn">
+                                              <input (change)="seleccionImagen($event.target.files[0])" type="file" id="dp">
+                                              <span class="btn btn--sm btn--round" aria-hidden="true">Subir imágen</span>
+
+                                          </label>
+                                            <span (click)="cambiarImagen()" class="btn btn--sm btn--round" aria-hidden="true">Guardar</span>
+                                        </div>
+                                    </div>
+
 
                                 </div>
 

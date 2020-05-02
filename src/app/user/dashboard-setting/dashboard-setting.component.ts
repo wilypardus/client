@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../../services/usuario/usuario.service';
 import { Usuario } from 'src/app/models/usuario.model';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-dashboard-setting',
@@ -12,8 +13,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class DashboardSettingComponent implements OnInit {
   forma: FormGroup;
   usuario: Usuario;
-
   token;
+  imagenSubir:File;
+  imagenTemp:any;
 
 
 
@@ -33,16 +35,9 @@ export class DashboardSettingComponent implements OnInit {
       correo: this.usuario.email,
       img: this.usuario.img,
     });
-
-
-
-
-
    }
 
   ngOnInit(): void {
-
-
   }
 
 
@@ -60,10 +55,35 @@ export class DashboardSettingComponent implements OnInit {
     this._usuarioService.actualizarUsuario(this.usuario._id, usuarioSave, this.token)
     .subscribe(resp => {
       // console.log(resp);
-
-
     });
 
+  }
+
+  seleccionImagen(archivo:File){
+    if(!archivo){
+    this.imagenSubir=null;
+      return;
+    }
+    if(archivo.type.indexOf('image')<0){
+
+    this.imagenSubir=archivo;
+    Swal.fire(
+      'Error!',
+      'El archivo seleccionado no es una imagen',
+      'error'
+    )
+    this.imagenSubir=null;
+    return;
+  }
+    //console.log(event);
+    let reader=new FileReader();
+    let urlImagenTemp=reader.readAsDataURL(archivo);
+
+    reader.onloadend= ()=> this.imagenTemp= reader.result;
+  }
+
+  cambiarImagen(){
+    this._usuarioService.cambiarImagen( this.imagenSubir,this.usuario._id)
   }
 
 

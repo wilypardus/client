@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { PipesModule } from '../pipes/pipes.module';
 
 
 //Paginas
@@ -16,6 +17,7 @@ import { ItemsListComponent } from './items-list/items-list.component';
 
 
 
+
 @NgModule({
   imports:[
     RouterModule,
@@ -23,6 +25,8 @@ import { ItemsListComponent } from './items-list/items-list.component';
     BrowserModule,
     FormsModule,
     NgxPaginationModule,
+    PipesModule
+
 
   ],
   declarations: [

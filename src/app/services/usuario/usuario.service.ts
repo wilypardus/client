@@ -8,6 +8,7 @@ import { map, ignoreElements } from 'rxjs/operators';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { Item } from '../../models/item.model';
+import { SubirArchivoService } from '../shared/subir-archivo.service';
 
 
 
@@ -18,12 +19,13 @@ export class UsuarioService {
 
   usuario:Usuario;
   token:string;
-  usuarioImg:string;
+
 
 
   constructor(
     public http:HttpClient,
     public router:Router,
+    public _subirArchivoService:SubirArchivoService,
     )
   {
     //console.log('Servicio usuario listo');
@@ -138,6 +140,21 @@ logout(){
       return resp.usuario;
     }));
     }
+
+// CAMBIAR IMAGEN
+cambiarImagen(archivo:File,id:string){
+
+  this._subirArchivoService.subirArchivo(archivo, 'usuarios',id,this.token )
+  .then(resp=>{
+    this.guardarStorage(id,this.token,this.usuario)
+
+  console.log(resp);
+  })
+  .catch(resp=>{
+    console.log(resp);
+  })
+
+}
 
 
 

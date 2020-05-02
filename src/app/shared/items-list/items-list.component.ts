@@ -19,12 +19,16 @@ import { filter,map } from 'rxjs/operators';
 
 export class ItemsListComponent implements OnInit {
   @Input()id;
+  @Input()limite=12;
+  @Input()filtro=true;
+
+
 
   items: Item[] = [];
   totalRegistros : number = 0;
   usuario: Usuario;
   p: number = 1;
-  limite = 12;
+
   isUser:string;
 
   constructor(
@@ -77,6 +81,19 @@ export class ItemsListComponent implements OnInit {
     })
   }
 
+}
+
+
+scrollToTop() {
+  (function smoothscroll() {
+
+      var currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      if (currentScroll > 0) {
+        location.reload();
+          window.requestAnimationFrame(smoothscroll);
+          window.scrollTo(0, currentScroll - (currentScroll / 8));
+      }
+  })();
 }
 // enviarId(id:string){
 //   this.router.navigate(['./user/actualizar-item',itemId]);

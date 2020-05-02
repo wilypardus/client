@@ -20,6 +20,9 @@ import { MisProductosComponent } from './mis-productos/mis-productos.component';
 import { CommonModule } from '@angular/common';
 import { CrearItemComponent } from './crear-item/crear-item.component';
 import { ActualizarItemComponent } from './actualizar-item/actualizar-item.component';
+import { PipesModule } from '../pipes/pipes.module';
+
+
 
 
 
@@ -55,6 +58,8 @@ import { ActualizarItemComponent } from './actualizar-item/actualizar-item.compo
     ChartsModule,
     CommonModule,
     ReactiveFormsModule,
+    PipesModule
+
 
 
 

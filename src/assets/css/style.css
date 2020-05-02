@@ -10188,6 +10188,8 @@ span.counter {
 
 .item-preview img {
     max-width: 100%;
+    max-height: 418px;
+    object-fit: cover;
 }
 
 .item-preview .item__preview-thumb {
@@ -10300,6 +10302,7 @@ span.counter {
     -webkit-border-radius: 4px;
     border-radius: 4px;
     background: #fff;
+    margin-bottom: 30px;
 }
 
 .item-info .tab-content-wrapper {
@@ -11562,6 +11565,8 @@ span.counter {
 .profile_images .profile_image_area img {
     -webkit-border-radius: 50%;
     border-radius: 50%;
+    height: 96px;
+    width: 96px;
 }
 
 .profile_images .prof_img_upload img {

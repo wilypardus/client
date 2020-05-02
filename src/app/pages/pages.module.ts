@@ -11,6 +11,8 @@ import { ProductosComponent } from './productos/productos.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
+import { ItemSingleComponent } from './item-single/item-single.component';
+import { PipesModule } from '../pipes/pipes.module';
 
 
 
@@ -24,7 +26,8 @@ import { CommonModule } from '@angular/common';
     ItemsComponent,
     DesignersComponent,
     ProductosComponent,
-    ContactoComponent
+    ContactoComponent,
+    ItemSingleComponent
 
 
 
@@ -37,6 +40,7 @@ import { CommonModule } from '@angular/common';
     ChartsModule,
     BrowserModule,
     CommonModule,
+    PipesModule
 
 
 

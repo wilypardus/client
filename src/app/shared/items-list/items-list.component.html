@@ -7,7 +7,7 @@
                   <span class="lnr lnr-plus-circle"></span> Crear nuevo producto</button>
             </div>
         </div>
-        <div class="row">
+        <div class="row" *ngIf="filtro">
             <div class="col-md-12">
 
                 <div class="filter-bar dashboard_title_area clearfix filter-bar2">
@@ -55,7 +55,7 @@
                         <img [src]="item.img" alt="Product Image">
                         <div class="prod_btn">
                             <a *ngIf="isUser" [routerLink]="['../actualizar-item',item._id]" class="transparent btn--sm" style="border:0px solid white"><span>Editar</span></a>
-                            <a *ngIf="!isUser" [routerLink]="['../ver-item',item._id]" class="transparent btn--sm" style="border:0px solid white"><span>Ver</span></a>
+                            <a (click)="scrollToTop()" *ngIf="!isUser" [routerLink]="['/pages/single',item._id]" class="transparent btn--sm" style="border:0px solid white"><span>Ver</span></a>
 
                         </div>
                         <!-- end /.prod_btn -->
@@ -70,7 +70,7 @@
                         </a>
                         <ul class="titlebtm">
                             <li>
-                                <img class="auth-img" [src]="item.usuario.img" [alt]="item.usuario.nombre">
+                                <img class="auth-img" [src]="item.usuario.img|imagen" [alt]="item.usuario.nombre">
                                 <p>
                                     <a href="#">{{item.usuario.nombre}}</a>
                                 </p>

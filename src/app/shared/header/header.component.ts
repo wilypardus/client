@@ -31,7 +31,8 @@ export class HeaderComponent implements OnInit {
 
   }
   ngOnChanges(): void {
-    // this.cargarDatos();
+    this.usuario=this._usuarioService.usuario;
+
 
   }
 

@@ -407,12 +407,13 @@
                         <!--start .author-author__info-->
                         <div class="author-author__info inline has_dropdown">
                             <div class="author__avatar">
-                                <img class="imgRedonda" [src]="this.usuario.img" alt="user avatar">
+                                <img class="imgRedonda" [src]="this.usuario.img | imagen" alt="user avatar">
 
                             </div>
                             <div class="autor__info">
                                 <p class="name">
                                     {{this.usuario.nombre}}
+
                                 </p>
                                 <p class="ammount">$20.45</p>
                             </div>

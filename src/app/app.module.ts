@@ -22,12 +22,14 @@ import { PaginationComponent } from './components/pagination/pagination.componen
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
     RegisterComponent,
+
 
 
 
