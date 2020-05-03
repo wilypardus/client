@@ -23,6 +23,7 @@ export class SubirArchivoService {
           if(xhr.status===200){
             console.log('Imagen subida');
             resolve(xhr.response);
+
           }else{
             console.log('Falló la subida');
             reject(xhr.response);

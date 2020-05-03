@@ -2,7 +2,7 @@ export class Item {
 
   constructor(
     public nombre:string,
-    public img:string,
+    public img:any,
     public categoria:string,
     public usuario:any,
     public descripcion:string,

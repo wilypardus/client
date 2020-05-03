@@ -13,6 +13,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { ItemSingleComponent } from './item-single/item-single.component';
 import { PipesModule } from '../pipes/pipes.module';
+import { AuthorComponent } from './author/author.component';
 
 
 
@@ -27,7 +28,8 @@ import { PipesModule } from '../pipes/pipes.module';
     DesignersComponent,
     ProductosComponent,
     ContactoComponent,
-    ItemSingleComponent
+    ItemSingleComponent,
+    AuthorComponent
 
 
 

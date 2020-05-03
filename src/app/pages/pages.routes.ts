@@ -7,6 +7,7 @@ import { DesignersComponent } from './designers/designers.component';
 import { ProductosComponent } from './productos/productos.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import { ItemSingleComponent } from './item-single/item-single.component';
+import { AuthorComponent } from './author/author.component';
 
 const pagesRoutes: Routes = [
   {path: 'pages',
@@ -16,6 +17,7 @@ const pagesRoutes: Routes = [
     { path: 'items', component: ItemsComponent,data:{titulo:'Items'} },
     { path: 'single/:itemId', component: ItemSingleComponent},
     { path: 'products', component: ProductosComponent,data:{titulo:'Productos'} },
+    { path: 'author/:usr', component: AuthorComponent,data:{titulo:'nombreUsr'} },
     { path: 'designers', component: DesignersComponent,data:{titulo:'Diseñadores'} },
     { path: 'contacto', component: ContactoComponent,data:{titulo:'Contacto'} },
 

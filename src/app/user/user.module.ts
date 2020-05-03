@@ -21,6 +21,9 @@ import { CommonModule } from '@angular/common';
 import { CrearItemComponent } from './crear-item/crear-item.component';
 import { ActualizarItemComponent } from './actualizar-item/actualizar-item.component';
 import { PipesModule } from '../pipes/pipes.module';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 
@@ -58,7 +61,9 @@ import { PipesModule } from '../pipes/pipes.module';
     ChartsModule,
     CommonModule,
     ReactiveFormsModule,
-    PipesModule
+    PipesModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot()
 
 
 

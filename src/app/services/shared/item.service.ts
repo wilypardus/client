@@ -5,6 +5,9 @@ import { map, ignoreElements } from 'rxjs/operators';
 import Swal from 'sweetalert2';
 import { Item } from '../../models/item.model';
 import { Router } from '@angular/router';
+import { SubirArchivoService } from './subir-archivo.service';
+import { ToastrService } from 'ngx-toastr';
+
 
 
 @Injectable({
@@ -17,7 +20,9 @@ totalRegistros : number = 0;
 id:string | number;
   constructor(
     public http:HttpClient,
-    public router:Router) {  }
+    public router:Router,
+    public _subirArchivoService:SubirArchivoService
+    ) {  }
 
   getItems(){
     let url=URL_SERVICIOS+'/item';
@@ -85,6 +90,21 @@ id:string | number;
       return resp.item;
     }));
     }
+
+    // CAMBIAR IMAGEN
+cambiarImagen(archivo:File,id:string,token:string){
+
+  this._subirArchivoService.subirArchivo(archivo, 'items',id,token )
+  .then(resp=>{
+
+
+ console.log(resp);
+  })
+  .catch(resp=>{
+    console.log(resp);
+  })
+
+}
 
 
 }

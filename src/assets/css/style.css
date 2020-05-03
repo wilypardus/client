@@ -2025,6 +2025,7 @@ h6 {
     font-weight: 500;
     line-height: 30px;
     color: #000000;
+    text-transform: capitalize;
 }
 
 .author-card .author-infos .author p {
@@ -2721,6 +2722,7 @@ h6 {
 .product-desc ul.titlebtm>li a,
 .product-desc ul.titlebtm>li p {
     font-size: 15px;
+    text-transform: capitalize;
 }
 
 .product-desc ul.titlebtm>li.product_cat {
@@ -8301,6 +8303,7 @@ ul.nav-tabs.nav--tabs2 li a::before {
 
 .author-area.not_logged_in .join {
     padding: 30px 0;
+    color: white;
 }
 
 .author-area.not_logged_in .join .btn+.btn {
@@ -10818,6 +10821,7 @@ span.counter {
 
 .about_author h2 span {
     font-weight: 500;
+    text-transform: capitalize;
 }
 
 .about_author p+p {

@@ -6,6 +6,7 @@ import { Item } from '../../models/item.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Usuario } from '../../models/usuario.model';
 import { ItemService } from '../../services/shared/item.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -20,12 +21,16 @@ export class ActualizarItemComponent implements OnInit {
   usuario: Usuario;
   itemId='';
   item: Item;
+  imagenSubir:File;
+  imagenTemp:any;
+
 
   constructor(
     public router: Router,
     public activatedRoute:ActivatedRoute,
     public _itemService: ItemService,
     public _usuarioService: UsuarioService,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -54,6 +59,8 @@ this.activatedRoute.params.subscribe(params=>{
 // BORRAR
 }
 borrarItem(){
+  this.token = localStorage.getItem('token');
+
   Swal.fire({
 
     title: '¿Estás seguro?',
@@ -123,7 +130,7 @@ obtenerItem(id){
 
   this._itemService.getItemsId(id).subscribe((resp: any) => {
     this.item = resp.item;
-    console.log(this.item);
+    //console.log(this.item);
 
     this.forma.setValue({
       nombre: this.item.nombre,
@@ -138,6 +145,32 @@ obtenerItem(id){
       });
 }
 
+seleccionImagen(archivo:File){
+  if(!archivo){
+  this.imagenSubir=null;
+    return;
+  }
+  if(archivo.type.indexOf('image')<0){
+    //console.log(this.imagenSubir);
+
+  this.toastr.error('El archivo seleccionado no es válido!', null);
+
+      this.imagenSubir=null;
+      return;
+    }
+    this.imagenSubir=archivo;
+  //console.log(event);
+  let reader=new FileReader();
+  let urlImagenTemp=reader.readAsDataURL(archivo);
+
+  reader.onloadend = ()=> this.imagenTemp= reader.result;
+}
+
+cambiarImagen(){
+  //console.log(this.imagenSubir);
+  this._itemService.cambiarImagen( this.imagenSubir,this.item._id,this.token);
+  this.toastr.success('Cambios Guardados!', null);
+}
 
 
 

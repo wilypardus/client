@@ -27,6 +27,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.usuario=this._usuarioService.usuario;
 
 
   }

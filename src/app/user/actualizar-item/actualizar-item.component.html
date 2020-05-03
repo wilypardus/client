@@ -55,52 +55,6 @@
                     </div>
                     <!-- end /.upload_modules -->
 
-                    <div class="upload_modules module--upload">
-                        <div class="modules__title">
-                            <h3>Imágen</h3>
-                        </div>
-                        <!-- end /.module_title -->
-
-                        <div class="modules__content">
-                            <div class="form-group">
-                                <div class="upload_wrapper">
-                                    <p>Añadir imágen
-                                        <span>(JPEG or PNG 100x100px)</span>
-                                    </p>
-
-                                    <div class="custom_upload">
-                                        <label for="thumbnail">
-                                        <input type="file" id="thumbnail" class="files">
-                                        <input formControlName="img" name="img" type="text" id="product_name" class="text_field" placeholder="Enter your product name here...">
-
-                                        <span class="btn btn--round btn--sm">Seleccionar archivo</span>
-                                    </label>
-                                    </div>
-                                    <!-- end /.custom_upload -->
-
-                                    <div class="progress_wrapper">
-                                        <div class="labels clearfix">
-                                            <p>nombre-archivo.jpg</p>
-                                            <span data-width="89">89%</span>
-                                        </div>
-                                        <div class="progress">
-                                            <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 89%;">
-                                                <span class="sr-only">70% Complete</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- end /.progress_wrapper -->
-
-                                    <span class="lnr upload_cross lnr-cross"></span>
-                                </div>
-                                <!-- end /.upload_wrapper -->
-                            </div>
-                            <!-- end /.form-group -->
-
-                        </div>
-                        <!-- end /.upload_modules -->
-                    </div>
-                    <!-- end /.upload_modules -->
 
                     <div class="upload_modules">
                         <div class="modules__title">
@@ -172,6 +126,8 @@
                     <div class="row text-center">
                         <div class="col">
                             <button type="submit" class="btn btn--round btn--lg btn--lg">Guardar </button>
+                            <span (click)="borrarItem()" class="btn btn-lg btn--round btn-danger">Eliminar Producto</span>
+
                         </div>
                     </div>
                 </form>
@@ -182,27 +138,41 @@
                 <aside class="sidebar upload_sidebar">
                     <div class="sidebar-card text-center">
                         <div class="card-title">
-                            <button (click)="borrarItem()" class="btn btn-lg btn--round btn-danger">Eliminar</button>
+                            <img *ngIf="!imagenTemp" [src]="item.img|imagen:'items'" alt="Author profile area">
+                            <img *ngIf="imagenTemp" [src]="imagenTemp" alt="Author profile area">
+                            <!-- <input formControlName="img" name="img" type="text" class="text_field" placeholder="img"> -->
+                        </div>
+
+                        <div class="profile_image_area">
+
+
+
+
+                            <div class="img_info">
+                                <p class="subtitle">750x430 px (JPG, GIF o PNG)</p>
+
+                            </div>
+
+                            <div class="prof_img_upload">
+                                <div class="upload_title">
+
+                                    <label for="dp" class="upload_btn">
+
+                                  <span class="btn btn--sm" aria-hidden="true">Seleccionar Archivo</span>
+
+                                  <input style="display: none;" (change)="seleccionImagen($event.target.files[0])" type="file" id="dp">
+
+
+                                </label>
+                                    <button (click)="cambiarImagen()" class="btn btn--sm btn--success ml-2" aria-hidden="true">Guardar Cambios</button>
+                                </div>
+                            </div>
+
 
                         </div>
 
-                        <div class="card_content">
-                            <div class="card_info">
-                                <h4>Image Upload</h4>
-                                <p>Nunc placerat mi id nisi interdum mollis. Praesent there pharetra, justo ut sceleris que the mattis interdum.</p>
-                            </div>
-
-                            <div class="card_info">
-                                <h4>File Upload</h4>
-                                <p>Nunc placerat mi id nisi interdum mollis. Praesent there pharetra, justo ut sceleris que the mattis interdum.</p>
-                            </div>
-
-                            <div class="card_info">
-                                <h4>Vector Upload</h4>
-                                <p>Nunc placerat mi id nisi interdum mollis. Praesent there pharetra, justo ut sceleris que the mattis interdum.</p>
-                            </div>
-                        </div>
                     </div>
+
                     <!-- end /.sidebar-card -->
 
                     <div class="sidebar-card">

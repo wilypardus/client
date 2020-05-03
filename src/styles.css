@@ -21,3 +21,9 @@ body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+.img_temp_item {
+    width: 350px;
+    height: 205px;
+    object-fit: cover;
+}

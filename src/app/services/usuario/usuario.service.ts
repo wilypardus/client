@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { Item } from '../../models/item.model';
 import { SubirArchivoService } from '../shared/subir-archivo.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -26,11 +27,13 @@ export class UsuarioService {
     public http:HttpClient,
     public router:Router,
     public _subirArchivoService:SubirArchivoService,
+    private toastr: ToastrService
+
     )
   {
     //console.log('Servicio usuario listo');
     this.cargarStorage();
-    console.log(this.usuario);
+    //console.log(this.usuario);
   }
 
 estaLogeado(){
@@ -97,7 +100,10 @@ logout(){
     let token=localStorage.getItem('token');
     let url=URL_SERVICIOS+'/usuario/obt/?token='+token;
 
-    return this.http.get(url);
+    return this.http.get(url).pipe(map((resp: any) => {
+      console.log(resp);
+        return resp;
+      }));;
   }
 
   obtenerDatosId(id:any){
@@ -106,6 +112,16 @@ logout(){
 
     return this.http.get(url,id).pipe(map((resp: any) => {
 
+      return resp;
+    }));
+  }
+  obtenerDatosUsrName(usr:any){
+    //console.log(usr);
+
+    let url=URL_SERVICIOS+'/usuario/usr/'+usr;
+
+    return this.http.get(url).pipe(map((resp: any) => {
+    //console.log(resp);
       return resp;
     }));
   }
@@ -127,16 +143,17 @@ logout(){
   actualizarUsuario(id:string,usuario:Usuario,token){
     let url = URL_SERVICIOS + '/usuario/'+id+'?token=' + token;
     return this.http.put(url, usuario).pipe(map((resp: any) => {
-      this.guardarStorage( resp.usuario._id,token,resp.usuario);
+      this.usuario=resp.usuario
+      //console.log(resp.usuario);
 
-      Swal.fire({
-        timer:2000,
-        text:'Tus datos han sido modificados correctamente correctamente!',
-        title:'Datos Modificados',
-        icon:'success',
-      }).then( ()=> {
+      this.guardarStorage( resp.usuario._id,token,this.usuario);
+      this.toastr.success('Cambios Guardados!', null);
+      setTimeout(()=>{
         location.reload();
-      })
+
+      },1000)
+
+
       return resp.usuario;
     }));
     }
@@ -145,16 +162,24 @@ logout(){
 cambiarImagen(archivo:File,id:string){
 
   this._subirArchivoService.subirArchivo(archivo, 'usuarios',id,this.token )
-  .then(resp=>{
-    this.guardarStorage(id,this.token,this.usuario)
+  .then((resp:any)=>{
 
-  console.log(resp);
+    let temp=JSON.parse(resp)
+    let imgTemp=temp.schemaResponse.data.img
+//console.log(temp.schemaResponse.data);
+this.usuario.img=imgTemp
+    //this.usuario.img=resp.usuario.img
+    this.guardarStorage(id, this.token, this.usuario);
+  this.toastr.success('Cambios Guardados!', null);
+
+  //console.log(resp);
   })
   .catch(resp=>{
-    console.log(resp);
+    //console.log(resp);
   })
 
 }
+
 
 
 

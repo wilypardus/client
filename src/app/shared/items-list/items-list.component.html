@@ -52,7 +52,7 @@
 
 
                     <div class="product__thumbnail">
-                        <img [src]="item.img" alt="Product Image">
+                        <img [src]="item.img | imagen:'items'" alt="Product Image">
                         <div class="prod_btn">
                             <a *ngIf="isUser" [routerLink]="['../actualizar-item',item._id]" class="transparent btn--sm" style="border:0px solid white"><span>Editar</span></a>
                             <a (click)="scrollToTop()" *ngIf="!isUser" [routerLink]="['/pages/single',item._id]" class="transparent btn--sm" style="border:0px solid white"><span>Ver</span></a>
@@ -72,7 +72,7 @@
                             <li>
                                 <img class="auth-img" [src]="item.usuario.img|imagen" [alt]="item.usuario.nombre">
                                 <p>
-                                    <a href="#">{{item.usuario.nombre}}</a>
+                                    <a [routerLink]="['/pages/author',item.usuario.nombre]">{{item.usuario.nombre}}</a>
                                 </p>
                             </li>
                             <li class="product_cat">
@@ -106,7 +106,7 @@
 
         </div>
 
-        <div class="row">
+        <div class="row" *ngIf="paginacion">
             <div class="col-md-12">
                 <div class="pagination-area">
                     <nav class="navigation pagination" role="navigation">

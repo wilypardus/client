@@ -21,6 +21,8 @@ export class ItemsListComponent implements OnInit {
   @Input()id;
   @Input()limite=12;
   @Input()filtro=true;
+  @Input()paginacion=true;
+
 
 
 
@@ -89,7 +91,6 @@ scrollToTop() {
 
       var currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
       if (currentScroll > 0) {
-        location.reload();
           window.requestAnimationFrame(smoothscroll);
           window.scrollTo(0, currentScroll - (currentScroll / 8));
       }
