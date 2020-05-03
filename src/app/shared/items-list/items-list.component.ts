@@ -22,11 +22,14 @@ export class ItemsListComponent implements OnInit {
   @Input()limite=12;
   @Input()filtro=true;
   @Input()paginacion=true;
+  @Input()busqueda:string;
+  @Input()items: Item[] = [];
 
 
 
 
-  items: Item[] = [];
+
+
   totalRegistros : number = 0;
   usuario: Usuario;
   p: number = 1;
@@ -39,6 +42,7 @@ export class ItemsListComponent implements OnInit {
     public _itemsService : ItemService,
     public _filtrosService : FiltrosService,
     private router:Router,
+
     ) {
 
       this.getDataRoute()
