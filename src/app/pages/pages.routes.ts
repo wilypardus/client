@@ -8,6 +8,7 @@ import { ProductosComponent } from './productos/productos.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import { ItemSingleComponent } from './item-single/item-single.component';
 import { AuthorComponent } from './author/author.component';
+import { BusquedaComponent } from './busqueda/busqueda.component';
 
 const pagesRoutes: Routes = [
   {path: 'pages',
@@ -18,6 +19,7 @@ const pagesRoutes: Routes = [
     { path: 'single/:itemId', component: ItemSingleComponent},
     { path: 'products', component: ProductosComponent,data:{titulo:'Productos'} },
     { path: 'author/:usr', component: AuthorComponent,data:{titulo:'nombreUsr'} },
+    { path: 'search/:termino', component: BusquedaComponent,data:{titulo:'Buscador'} },
     { path: 'designers', component: DesignersComponent,data:{titulo:'Diseñadores'} },
     { path: 'contacto', component: ContactoComponent,data:{titulo:'Contacto'} },
 

@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
     public _usuarioService:UsuarioService,
     public _dashboardMenuService:DashboardMenuService,
     public _MenuService:MenuService,
-    public router:RouterModule,
+    public router:Router,
   ) {
 
     this.usuario=this._usuarioService.usuario;
@@ -57,5 +57,9 @@ export class HeaderComponent implements OnInit {
   estaLogeado(){
     this._usuarioService.estaLogeado()
   }
+
+buscar(termino:string){
+  this.router.navigate(['/pages/search',termino])
+}
 
 }

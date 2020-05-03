@@ -18,6 +18,7 @@ import { ItemsListComponent } from './items-list/items-list.component';
 
 
 
+
 @NgModule({
   imports:[
     RouterModule,
@@ -34,6 +35,7 @@ import { ItemsListComponent } from './items-list/items-list.component';
     BreadcrumbsComponent,
     NopagefoundComponent,
     ItemsListComponent,
+
   ],
   exports: [
     HeaderComponent,

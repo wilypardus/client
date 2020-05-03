@@ -14,6 +14,8 @@ import { CommonModule } from '@angular/common';
 import { ItemSingleComponent } from './item-single/item-single.component';
 import { PipesModule } from '../pipes/pipes.module';
 import { AuthorComponent } from './author/author.component';
+import { BusquedaComponent } from './busqueda/busqueda.component';
+
 
 
 
@@ -29,7 +31,8 @@ import { AuthorComponent } from './author/author.component';
     ProductosComponent,
     ContactoComponent,
     ItemSingleComponent,
-    AuthorComponent
+    AuthorComponent,
+    BusquedaComponent
 
 
 
@@ -53,7 +56,8 @@ import { AuthorComponent } from './author/author.component';
  ],
   exports: [
     ItemsComponent,
-    PagesComponent
+    PagesComponent,
+    BusquedaComponent
 
   ],
   providers: [],

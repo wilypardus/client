@@ -529,7 +529,7 @@
                         <div class="mainmenu__search">
                             <form action="#">
                                 <div class="searc-wrap">
-                                    <input type="text" placeholder="Search product">
+                                    <input #input (keyup.enter)="buscar(input.value)" type="text" placeholder='Introduce un término para la búsqueda... '>
                                     <button type="submit" class="search-wrap__btn">
                                               <span class="lnr lnr-magnifier"></span>
                                           </button>
