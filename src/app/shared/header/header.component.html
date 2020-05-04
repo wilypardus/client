@@ -530,7 +530,7 @@
                             <form action="#">
                                 <div class="searc-wrap">
                                     <input #input (keyup.enter)="buscar(input.value)" type="text" placeholder='Introduce un término para la búsqueda... '>
-                                    <button type="submit" class="search-wrap__btn">
+                                    <button (click)="buscar(input.value)" type="submit" class="search-wrap__btn">
                                               <span class="lnr lnr-magnifier"></span>
                                           </button>
                                 </div>
