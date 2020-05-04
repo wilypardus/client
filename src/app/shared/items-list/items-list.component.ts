@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
 import { Item } from '../../models/item.model';
 import { Usuario } from '../../models/usuario.model';
 import { AutorItemsService } from '../../services/shared/autor-items.service';
@@ -7,6 +7,8 @@ import { ItemService } from '../../services/shared/item.service';
 import { FiltrosService } from '../../services/shared/filtros.service';
 import { Router, ActivationEnd } from '@angular/router';
 import { filter,map } from 'rxjs/operators';
+import { SearchService } from '../../services/shared/search.service';
+
 
 
 
@@ -17,19 +19,22 @@ import { filter,map } from 'rxjs/operators';
   ]
 })
 
-export class ItemsListComponent implements OnInit {
-  @Input()id;
+export class ItemsListComponent implements OnInit, OnChanges {
+  @Input()id=0;
   @Input()limite=12;
   @Input()filtro=true;
   @Input()paginacion=true;
-  @Input()busqueda:string;
-  @Input()items: Item[] = [];
+  @Input()busqueda=null;
+  @Input()todo;
+
+
+
+  @Output('totalRegistros') registros : EventEmitter <number> = new EventEmitter;
 
 
 
 
-
-
+  items: Item[] = [];
   totalRegistros : number = 0;
   usuario: Usuario;
   p: number = 1;
@@ -42,19 +47,84 @@ export class ItemsListComponent implements OnInit {
     public _itemsService : ItemService,
     public _filtrosService : FiltrosService,
     private router:Router,
+    public _searchService:SearchService
 
     ) {
+      if(this.todo=true){
+        this._itemsService.getItems().subscribe((resp:any)=>{
+          this.items=resp.items;
+          this.totalRegistros=resp.items.length;
+          //console.log(resp);
+          //console.log(this.items);
+          })
+      }
+
+    if(this.busqueda=null)
+{this._searchService.buscar(this.busqueda).subscribe((resp:any)=>{
+
+    this.items=resp.items;
+
+
+        //console.log("itemssadasd",this.items);
+
+
+      })}else{
 
       this.getDataRoute()
       .subscribe(data=>{
       this.isUser=data.isUser;
       })
       console.log(this.isUser);
+    }
+    }
 
+    ngOnChanges():void{
+      if(this.busqueda !=null)
+      {this._searchService.buscar(this.busqueda).subscribe((resp:any)=>{
+
+        this.items=resp.items;
+        //console.log(resp.items);
+        this.totalRegistros=resp.items.length;
+        this.registros.emit(this.totalRegistros);
+
+
+        console.log("itemssadasd",this.items);
+
+
+      })}
+      if(this.id && this.busqueda){
+        this.recibirId(this.id);
+
+      this.getDataRoute()
+      .subscribe(data=>{
+      this.isUser=data.isUser;
+      })
+      //console.log(this.isUser);
+    }
     }
 
   ngOnInit(): void {
-    this.recibirId(this.id);
+    if(this.busqueda)
+      {this._searchService.buscar(this.busqueda).subscribe((resp:any)=>{
+
+        this.items=resp.items;
+        this.totalRegistros=resp.items.length;
+        this.registros.emit(this.totalRegistros);
+
+
+        console.log("itemssadasd",this.items);
+
+
+      })}
+      if(this.id){
+        this.recibirId(this.id);
+
+      this.getDataRoute()
+      .subscribe(data=>{
+      this.isUser=data.isUser;
+      })
+      //console.log(this.isUser);
+    }
   }
   getDataRoute(){
     return this.router.events.pipe(

@@ -1,6 +1,6 @@
-<div class="dashboard_contents">
+<div class="dashboard_contents pt-5">
 
-    <div class="container">
+    <div class="container" style="width: 100%;">
         <div class="row mb-5" *ngIf="isUser">
             <div class="col-md-12 text-center">
                 <button routerLink="../crear-item" class="btn btn-lg btn--icon btn--round btn--fullwidth">
@@ -10,7 +10,7 @@
         <div class="row" *ngIf="filtro">
             <div class="col-md-12">
 
-                <div class="filter-bar dashboard_title_area clearfix filter-bar2">
+                <div *ngIf="this.totalRegistros !==0" class="filter-bar dashboard_title_area clearfix filter-bar2">
                     <div class="dashboard__title dashboard__title pull-left">
                         <h3 *ngIf="isUser">Administrar Productos</h3>
                         <h3 *ngIf="!isUser">Productos</h3>
@@ -40,6 +40,11 @@
                 <!-- end /.filter-bar -->
             </div>
             <!-- end /.col-md-12 -->
+
+            <h6 *ngIf="this.totalRegistros ==0" class="text-center">
+                No se han encontrado resultados...
+            </h6>
+
         </div>
         <!-- end /.row -->
 
@@ -112,7 +117,7 @@
                     <nav class="navigation pagination" role="navigation">
                         <div class="nav-links">
 
-                            <pagination-controls previousLabel="Anterior" nextLabel="Siguiente" (pageChange)="p = $event"></pagination-controls>
+                            <pagination-controls *ngIf="this.totalRegistros !==0" previousLabel="Anterior" nextLabel="Siguiente" (pageChange)="p = $event"></pagination-controls>
                             <!-- <a class="prev page-numbers" href="#">
                     <span class="lnr lnr-arrow-left"></span>
                 </a>

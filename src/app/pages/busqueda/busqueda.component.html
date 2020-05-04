@@ -8,8 +8,8 @@
         <!-- start .col-md-3 -->
         <div class="col-lg-3">
             <!-- start aside -->
-            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                <a class="nav-link active" id="items-tab" data-toggle="pill" href="#items" role="tab" aria-controls="items" aria-selected="true">Items</a>
+            <div class="nav flex-column nav-pills pt-5" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <a class="nav-link active" id="items-tab" data-toggle="pill" href="#items" role="tab" aria-controls="items" aria-selected="true">Items <span class="subtitle">( {{totalRegistros}} )</span></a>
                 <a class="nav-link" id="usuarios-tab" data-toggle="pill" href="#usuarios" role="tab" aria-controls="usuarios" aria-selected="false">Usuarios</a>
                 <a class="nav-link" id="productos-tab" data-toggle="pill" href="#productos" role="tab" aria-controls="productos" aria-selected="false">Productos</a>
 
@@ -158,13 +158,14 @@
 
         <!-- start col-md-9 -->
         <div class="col-lg-9">
+
             <div class="row">
 
                 <div class="tab-content" id="v-pills-tabContent">
 
                     <div class="tab-pane fade show active" id="items" role="tabpanel" aria-labelledby="items-tab">
                         <!-- ******************************** -->
-                        <app-items-list [busqueda]="items"></app-items-list>
+                        <app-items-list (totalRegistros)="totalRegistros=$event" [busqueda]="this.termino"></app-items-list>
                         <!-- ******************************** -->
                     </div>
                     <div class="tab-pane fade" id="usuarios" role="tabpanel" aria-labelledby="usuarios-tab">sdsdasdasdssad dsa sd adsa saddas</div>
