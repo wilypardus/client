@@ -15,6 +15,8 @@ export class BusquedaComponent implements OnInit {
   usuarios:Usuario;
   items:Item;
   totalRegistros;
+  totalRegistrosUser;
+
   termino;
 
   constructor(

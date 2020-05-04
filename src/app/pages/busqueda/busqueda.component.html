@@ -9,8 +9,8 @@
         <div class="col-lg-3">
             <!-- start aside -->
             <div class="nav flex-column nav-pills pt-5" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                <a class="nav-link active" id="items-tab" data-toggle="pill" href="#items" role="tab" aria-controls="items" aria-selected="true">Items <span class="subtitle">( {{totalRegistros}} )</span></a>
-                <a class="nav-link" id="usuarios-tab" data-toggle="pill" href="#usuarios" role="tab" aria-controls="usuarios" aria-selected="false">Usuarios</a>
+                <a class="nav-link active" id="items-tab" data-toggle="pill" href="#items" role="tab" aria-controls="items" aria-selected="true">Items <span class="subtitle text-right" style="float:right">( {{totalRegistros}} )</span></a>
+                <a class="nav-link" id="usuarios-tab" data-toggle="pill" href="#usuarios" role="tab" aria-controls="usuarios" aria-selected="false">Usuarios <span class="subtitle" style="float:right">( {{totalRegistrosUser}} )</span></a>
                 <a class="nav-link" id="productos-tab" data-toggle="pill" href="#productos" role="tab" aria-controls="productos" aria-selected="false">Productos</a>
 
             </div>
@@ -161,14 +161,17 @@
 
             <div class="row">
 
-                <div class="tab-content" id="v-pills-tabContent">
+                <div class="tab-content pt-5" style="width: 100%;" id="v-pills-tabContent">
 
                     <div class="tab-pane fade show active" id="items" role="tabpanel" aria-labelledby="items-tab">
                         <!-- ******************************** -->
                         <app-items-list (totalRegistros)="totalRegistros=$event" [busqueda]="this.termino"></app-items-list>
                         <!-- ******************************** -->
                     </div>
-                    <div class="tab-pane fade" id="usuarios" role="tabpanel" aria-labelledby="usuarios-tab">sdsdasdasdssad dsa sd adsa saddas</div>
+                    <div class="tab-pane fade" id="usuarios" role="tabpanel" aria-labelledby="usuarios-tab">
+                        <app-users (totalRegistrosUser)="totalRegistrosUser=$event" [busqueda]="this.termino"></app-users>
+
+                    </div>
                     <div class="tab-pane fade" id="productos" role="tabpanel" aria-labelledby="productos-tab">ddd...</div>
                 </div>
 

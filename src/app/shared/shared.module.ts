@@ -12,6 +12,8 @@ import { HeaderComponent } from './header/header.component';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { NopagefoundComponent } from './nopagefound/nopagefound.component';
 import { ItemsListComponent } from './items-list/items-list.component';
+import { UserListComponent } from './users-list/user-list.component';
+
 
 
 
@@ -35,13 +37,15 @@ import { ItemsListComponent } from './items-list/items-list.component';
     BreadcrumbsComponent,
     NopagefoundComponent,
     ItemsListComponent,
+    UserListComponent
 
   ],
   exports: [
     HeaderComponent,
     BreadcrumbsComponent,
     NopagefoundComponent,
-    ItemsListComponent
+    ItemsListComponent,
+    UserListComponent
   ],
   providers: [],
 })

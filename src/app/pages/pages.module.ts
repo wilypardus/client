@@ -23,6 +23,7 @@ import { BusquedaComponent } from './busqueda/busqueda.component';
 
 
 
+
 @NgModule({
   declarations: [
     PagesComponent,
@@ -32,7 +33,8 @@ import { BusquedaComponent } from './busqueda/busqueda.component';
     ContactoComponent,
     ItemSingleComponent,
     AuthorComponent,
-    BusquedaComponent
+    BusquedaComponent,
+
 
 
 

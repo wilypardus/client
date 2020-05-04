@@ -1,4 +1,4 @@
-<div class="dashboard_contents pt-5">
+<div class="dashboard_contents pt-0">
 
     <div class="container" style="width: 100%;">
         <div class="row mb-5" *ngIf="isUser">
@@ -9,6 +9,9 @@
         </div>
         <div class="row" *ngIf="filtro">
             <div class="col-md-12">
+                <h6 *ngIf="this.totalRegistros ==0">
+                    No se han encontrado resultados...
+                </h6>
 
                 <div *ngIf="this.totalRegistros !==0" class="filter-bar dashboard_title_area clearfix filter-bar2">
                     <div class="dashboard__title dashboard__title pull-left">
@@ -40,11 +43,6 @@
                 <!-- end /.filter-bar -->
             </div>
             <!-- end /.col-md-12 -->
-
-            <h6 *ngIf="this.totalRegistros ==0" class="text-center">
-                No se han encontrado resultados...
-            </h6>
-
         </div>
         <!-- end /.row -->
 
