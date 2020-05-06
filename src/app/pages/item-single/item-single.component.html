@@ -567,7 +567,7 @@
                             </li>
                         </ul>
 
-                        valoracionMedia
+
                         <div class="rating product--rating">
                             <ul>
                                 <li>
@@ -601,7 +601,7 @@
 
                         <div class="author-infos">
                             <div class="author_avatar">
-                                <img width="90px" style="border-radius: 45px;" [src]="usuario.img | imagen" alt="usuario.nombre">
+                                <img class="grande" [src]="usuario.img | imagen" alt="usuario.nombre">
                             </div>
 
                             <div class="author">
@@ -632,7 +632,7 @@
                             <!-- end /.social -->
 
                             <div class="author-btn">
-                                <a href="#" class="btn btn--sm btn--round">View Profile</a>
+                                <a [routerLink]="['/pages/author',item.usuario.nombre]" class="btn btn--sm btn--round">Ver Perfil</a>
                                 <a href="#" class="btn btn--sm btn--round">Message</a>
                             </div>
                             <!-- end /.author-btn -->

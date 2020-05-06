@@ -10,10 +10,10 @@ import { Review } from 'src/app/models/review.model';
 })
 export class ReviewsComponent implements OnInit {
 @Input() itemId;
-reviews:any;
+reviews: any;
 totalRegistros;
-valoracionMedia=0;
-calculo=0;
+valoracionMedia = 0;
+calculo = 0;
 
 
 @Output('totalRegistros') registros: EventEmitter <number> = new EventEmitter;
@@ -21,32 +21,29 @@ calculo=0;
 
 
   constructor(
-    public _reviewsServices:ReviewsService
+    public _reviewsServices: ReviewsService
   ) {
-
-  this._reviewsServices.getItemReviews(this.itemId).subscribe((resp:any)=>{
-  this.reviews=resp.itemReviews;
-  this.totalRegistros=resp.itemReviews.length;
+  this._reviewsServices.getItemReviews(this.itemId).subscribe((resp: any) => {
+  this.reviews = resp.itemReviews;
+  this.totalRegistros = resp.itemReviews.length;
   this.registros.emit(this.totalRegistros);
-  this.sacarMedia()
-  //console.log(this.reviews);
-  })
-
+  this.sacarMedia();
+  // console.log(this.reviews);
+  });
  }
 
   ngOnInit(): void {
-
   }
 
 sacarMedia(){
   this.reviews.forEach(element => {
     // console.log(element.puntuacion);
-    let puntuacion:number=element.puntuacion
-    this.calculo=this.calculo+puntuacion
+    const puntuacion: number = element.puntuacion;
+    this.calculo = this.calculo + puntuacion;
     // console.log(this.valoracionMedia);
   });
   // console.log(this.calculo);
-  this.valoracionMedia=(this.calculo/this.reviews.length);
+  this.valoracionMedia = (this.calculo / this.reviews.length);
   this.media.emit(this.valoracionMedia);
   // console.log(this.reviews.length);
   // console.log(this.valoracionMedia);

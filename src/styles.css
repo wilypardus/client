@@ -63,3 +63,8 @@ body {
     border-radius: 60px;
     object-fit: cover;
 }
+
+.author_avatar .grande {
+    border-radius: 48px;
+    width: 90px;
+}
