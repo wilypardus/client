@@ -1,0 +1,50 @@
+<div class="thread">
+    <ul class="media-list thread-list">
+        <li class="single-thread" *ngFor="let review of reviews">
+            <div class="media">
+                <div class="media-left">
+
+                    <img width="60px" class="media-object reviewUser" [src]="review.usuario.img|imagen" alt="{{review.usuario.nombre}}">
+
+                </div>
+                <div class="media-body">
+                    <div>
+                        <div class="media-heading">
+                            <a href="author.html">
+                                <h4 style="text-transform: capitalize;">{{review.usuario.nombre}}</h4>
+                            </a>
+                            <span>{{review.created|date:("dd/MM/yyyy")}}</span>
+                        </div>
+                        <div>
+                            <div class="rating product--rating">
+                                <ul>
+                                    <li>
+                                        <span *ngIf="review.puntuacion==0" class="fa fa-star-o"></span>
+                                        <span *ngIf="review.puntuacion>=0" class="fa fa-star"></span>
+                                    </li>
+                                    <li>
+                                        <span *ngIf="review.puntuacion<2" class="fa fa-star-o"></span>
+                                        <span *ngIf="review.puntuacion>=2" class="fa fa-star"></span>
+                                    </li>
+                                    <li>
+                                        <span *ngIf="review.puntuacion<3" class="fa fa-star-o"></span>
+                                        <span *ngIf="review.puntuacion>=3" class="fa fa-star"></span>
+                                    </li>
+                                    <li>
+                                        <span *ngIf="review.puntuacion<4" class="fa fa-star-o"></span>
+                                        <span *ngIf="review.puntuacion>=4" class="fa fa-star"></span>
+                                    </li>
+                                    <li>
+                                        <span *ngIf="review.puntuacion<5" class="fa fa-star-o"></span>
+                                        <span *ngIf="review.puntuacion>=5" class="fa fa-star"></span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <p>{{review.descripcion}}</p>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
