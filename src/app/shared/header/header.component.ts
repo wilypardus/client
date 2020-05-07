@@ -11,13 +11,13 @@ import { Usuario } from 'src/app/models/usuario.model';
   ]
 })
 export class HeaderComponent implements OnInit {
-  usuario:Usuario[]=[];
+  usuario;
   usuarioImg:any;
   // usuarioName:any;
   // usuarioRole:any;
   mobileCerrado:boolean=true;
   menu:any;
-  estaLogeado=false;
+
 
   constructor(
     public _usuarioService:UsuarioService,
@@ -25,18 +25,27 @@ export class HeaderComponent implements OnInit {
     public _menuService:MenuService,
     public router:Router,
   ) {
+    
+this.usuario=[]
     this.menu=this._menuService.menu;
     if(this._usuarioService.estaLogeado()==true){
       this.usuario=this._usuarioService.usuario;
+    }else{
+      
       }
     
    }
 
   ngOnInit(): void {
+  this.usuario=[]
     
     if(this._usuarioService.estaLogeado()==true){
       this.usuario=this._usuarioService.usuario;
+    }else{
+      
+
       }
+
 
   }
   ngOnChanges(): void {

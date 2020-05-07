@@ -9,7 +9,7 @@ import { ContactoComponent } from './contacto/contacto.component';
 import { ItemSingleComponent } from './item-single/item-single.component';
 import { AuthorComponent } from './author/author.component';
 import { BusquedaComponent } from './busqueda/busqueda.component';
-import { ReviewsComponent } from './reviews/reviews.component';
+import { CrearReviewsComponent } from './reviews/crear-reviews.component';
 
 const pagesRoutes: Routes = [
   {path: 'pages',
@@ -23,7 +23,7 @@ const pagesRoutes: Routes = [
     { path: 'search/:termino', component: BusquedaComponent,data:{titulo:'Buscador'} },
     { path: 'designers', component: DesignersComponent,data:{titulo:'Diseñadores'} },
     { path: 'contacto', component: ContactoComponent,data:{titulo:'Contacto'} },
-    { path: 'reviews', component: ReviewsComponent,data:{titulo:'reviews'} },
+    { path: 'reviews', component: CrearReviewsComponent,data:{titulo:'reviews'} },
 
 
       // { path: '', pathMatch: 'full', redirectTo: '/items' },

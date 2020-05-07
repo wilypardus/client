@@ -13,12 +13,13 @@ import { ToastrService } from 'ngx-toastr';
 
 
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioService {
 
-  usuario:Usuario;
+  usuario:Usuario;;
   token:string;
 
 
@@ -27,7 +28,8 @@ export class UsuarioService {
     public http:HttpClient,
     public router:Router,
     public _subirArchivoService:SubirArchivoService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+
 
     )
   {
@@ -144,6 +146,7 @@ logout(){
     let url = URL_SERVICIOS + '/usuario/'+id+'?token=' + token;
     return this.http.put(url, usuario).pipe(map((resp: any) => {
       this.usuario=resp.usuario
+      this.obtenerDatos();
       //console.log(resp.usuario);
 
       this.guardarStorage( resp.usuario._id,token,this.usuario);
@@ -171,6 +174,8 @@ this.usuario.img=imgTemp
     //this.usuario.img=resp.usuario.img
     this.guardarStorage(id, this.token, this.usuario);
   this.toastr.success('Cambios Guardados!', null);
+  this.obtenerDatos();
+  location.reload();
 
   //console.log(resp);
   })

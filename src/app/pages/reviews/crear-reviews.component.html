@@ -1,0 +1,16 @@
+<!-- comment reply -->
+<div class="media depth-2 reply-comment">
+    <div class="media-left">
+
+        <img class="media-object" [src]="usuario.img|imagen" alt="Commentator Avatar">
+
+    </div>
+    <div class="media-body">
+        <form ngNativeValidate [formGroup]="formReview" (ngSubmit)="crearReview()" class="comment-reply-form">
+            <input formControlName="puntuacion" name="puntuacion" type="number">
+            <textarea formControlName="descripcion" name="descripcion" class="bla" placeholder="Escribe tu comentario..."></textarea>
+            <button class="btn btn--md btn--round">Publicar Valoración</button>
+        </form>
+    </div>
+</div>
+<!-- comment reply -->

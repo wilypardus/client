@@ -1,7 +1,7 @@
 import { PAGES_ROUTES } from './pages.routes';
 import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ChartsModule } from 'ng2-charts';
 import { PagesComponent } from './pages.component';
@@ -16,6 +16,7 @@ import { PipesModule } from '../pipes/pipes.module';
 import { AuthorComponent } from './author/author.component';
 import { BusquedaComponent } from './busqueda/busqueda.component';
 import { ReviewsComponent } from './reviews/reviews.component';
+import { CrearReviewsComponent } from './reviews/crear-reviews.component';
 
 
 
@@ -36,6 +37,7 @@ import { ReviewsComponent } from './reviews/reviews.component';
     AuthorComponent,
     BusquedaComponent,
     ReviewsComponent,
+    CrearReviewsComponent,
 
 
 
@@ -49,7 +51,8 @@ import { ReviewsComponent } from './reviews/reviews.component';
     ChartsModule,
     BrowserModule,
     CommonModule,
-    PipesModule
+    PipesModule,
+    ReactiveFormsModule
 
 
 
