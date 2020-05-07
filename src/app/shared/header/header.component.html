@@ -445,11 +445,11 @@
                             <span class="lnr lnr-cross close_menu"></span>
                             <div class="author-author__info">
                                 <div class="author__avatar v_middle">
-                                    <img class="imgRedonda" [src]="this.usuario.img" alt="user avatar">
+                                    <img class="imgRedonda" [src]="usuario.img" alt="user avatar">
                                 </div>
                                 <div class="autor__info v_middle">
                                     <p class="name">
-                                        {{this.usuario.nombre}}
+                                        {{usuario.nombre}}
                                     </p>
                                     <p class="ammount">$20.45</p>
                                 </div>
@@ -546,7 +546,7 @@
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse" id="navbarNav4">
                             <ul class="navbar-nav">
-                                <li *ngFor="let item of _MenuService.menu">
+                                <li *ngFor="let item of menu">
 
                                     <a routerLink="/{{item.url}}" routerLinkActive="router-link-active">{{item.titulo}}</a>
                                 </li>

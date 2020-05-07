@@ -11,24 +11,32 @@ import { Usuario } from 'src/app/models/usuario.model';
   ]
 })
 export class HeaderComponent implements OnInit {
-  usuario:Usuario;
-  // usuarioImg:any;
+  usuario:Usuario[]=[];
+  usuarioImg:any;
   // usuarioName:any;
   // usuarioRole:any;
   mobileCerrado:boolean=true;
+  menu:any;
+  estaLogeado=false;
+
   constructor(
     public _usuarioService:UsuarioService,
     public _dashboardMenuService:DashboardMenuService,
-    public _MenuService:MenuService,
+    public _menuService:MenuService,
     public router:Router,
   ) {
-
-    this.usuario=this._usuarioService.usuario;
-  }
+    this.menu=this._menuService.menu;
+    if(this._usuarioService.estaLogeado()==true){
+      this.usuario=this._usuarioService.usuario;
+      }
+    
+   }
 
   ngOnInit(): void {
-    this.usuario=this._usuarioService.usuario;
-
+    
+    if(this._usuarioService.estaLogeado()==true){
+      this.usuario=this._usuarioService.usuario;
+      }
 
   }
   ngOnChanges(): void {
