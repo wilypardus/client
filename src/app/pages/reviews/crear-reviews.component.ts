@@ -5,6 +5,7 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { Review } from '../../models/review.model';
 import { ReviewsService } from '../../services/shared/reviews.service';
 
+
 @Component({
   selector: 'app-crear-reviews',
   templateUrl: './crear-reviews.component.html',
@@ -17,6 +18,7 @@ formReview:FormGroup;
 token;
 itemId="5eaeef8c0243171707c8f197";
 compra;
+rating;
   constructor(
     public _usuarioService: UsuarioService,
     public _reviewsService:ReviewsService
@@ -52,5 +54,7 @@ this.token = localStorage.getItem('token');
       console.log(resp);
     })
   }
+
+
 
 }

@@ -26,6 +26,10 @@ import { CrearReviewsComponent } from './reviews/crear-reviews.component';
 
 
 
+
+
+
+
 @NgModule({
   declarations: [
     PagesComponent,
@@ -52,7 +56,11 @@ import { CrearReviewsComponent } from './reviews/crear-reviews.component';
     BrowserModule,
     CommonModule,
     PipesModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+
+
+
+
 
 
 

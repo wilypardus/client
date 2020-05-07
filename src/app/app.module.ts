@@ -13,6 +13,7 @@ import { SharedModule } from './shared/shared.module';
 
 
 
+
 //Componentes
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -23,12 +24,14 @@ import { PaginationComponent } from './components/pagination/pagination.componen
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
     RegisterComponent,
+
 
 
 
@@ -49,6 +52,7 @@ import { PaginationComponent } from './components/pagination/pagination.componen
     ReactiveFormsModule,
     ServiceModule,
     SharedModule,
+
 
 
   ],
